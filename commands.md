@@ -14,6 +14,8 @@
 ## ASLR（アドレスのランダム化）のオン/オフ
 オフ sysctl -w kernel.randomize_va_space=0  
 オン sysctl -w kernel.randomize_va_space=2  
+または、  
+echo \[0/2\] | /proc/sys/kernel/randomize_va_space
 
 ## ファイル内の文字列検索
 grepも併用すると最強 
@@ -25,12 +27,24 @@ grepも併用すると最強
 - readelf -r ./hoge
 
 ## セクションを指定して表示
-- objdump -Mintel -d -j [.plt|.text] ./hoge
+- objdump -Mintel -d -j \[.plt|.text\] ./hoge
 
 ## リンクされたライブラリの表示
 - ldd ./hoge
 
 ## シンボル表示
-グローバル変数名がわかっているときに便利  
+グローバル変数名や関数名からアドレスを求める    
 - readelf -s ./hoge | grep buffer
 
+## elfファイルヘッダ情報
+### ヘッダ情報をすべて表示
+- objdump -x ./hoge
+### ファイルヘッダ
+- readelf -h ./hoge
+- objdump -f ./hoge
+### プログラムヘッダ（メモリマップ？）
+- readelf -l --wide ./hoge
+### ベースアドレス？の表示
+- readelf -l --wide ./hoge | grep LOAD
+### セクションヘッダ
+- objdump -h ./hoge

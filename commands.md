@@ -15,7 +15,7 @@
 オフ sysctl -w kernel.randomize_va_space=0  
 オン sysctl -w kernel.randomize_va_space=2  
 または、  
-echo \[0/2\] | /proc/sys/kernel/randomize_va_space
+echo \[0/2\] > /proc/sys/kernel/randomize_va_space
 
 ## ファイル内の文字列検索
 grepも併用すると最強 

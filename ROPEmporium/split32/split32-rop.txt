@@ -1,0 +1,6 @@
+0x80483e1: pop ebx; ret
+0x80486cb: pop ebp; ret
+0x80485f3: popa; cld; ret
+0x80486ca: pop edi; pop ebp; ret
+0x80486c9: pop esi; pop edi; pop ebp; ret
+0x80486c8: pop ebx; pop esi; pop edi; pop ebp; ret

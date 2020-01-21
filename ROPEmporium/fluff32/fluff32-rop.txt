@@ -1,0 +1,14 @@
+0x80483e1: pop ebx; ret
+0x80486fb: pop ebp; ret
+0x80485f3: popa; cld; ret
+0x80486fa: pop edi; pop ebp; ret
+0x8048696: pop ebx; xor [ecx],bl; ret
+0x80486f9: pop esi; pop edi; pop ebp; ret
+0x8048673: pop esi; mov ebp,0xcafebabe; ret
+0x804867d: pop ebp; mov edi,0xdeadbabe; ret
+0x804868b: pop ebp; mov edx,0xdefaced0; ret
+0x8048695: pop ebp; pop ebx; xor [ecx],bl; ret
+0x80486f8: pop ebx; pop esi; pop edi; pop ebp; ret
+0x8048670: pop edi; xor edx,edx; pop esi; mov ebp,0xcafebabe; ret
+0x804867a: pop esi; xor edx,ebx; pop ebp; mov edi,0xdeadbabe; ret
+0x8048692: pop edi; mov [ecx],edx; pop ebp; pop ebx; xor [ecx],bl; ret

@@ -1,0 +1,15 @@
+0x4007f0: pop rbp; ret
+0x400b39: pop rdi; ret
+0x400b3d: pop r13; ret
+0x400b42: pop r15; ret
+0x400b3c: pop rsp; pop r13; ret
+0x400b3b: pop r12; pop r13; ret
+0x400b41: pop rsi; pop r15; ret
+0x400b40: pop r14; pop r15; ret
+0x400baf: pop rbp; pop r14; pop r15; ret
+0x400bae: pop r13; pop r14; pop r15; ret
+0x400bac: pop r12; pop r13; pop r14; pop r15; ret
+0x400bab: pop rbp; pop r12; pop r13; pop r14; pop r15; ret
+0x40082d: pop rbp; mov edi,0x601080; jmp rax; nop [rax]; pop rbp; ret
+0x4007df: pop rbp; mov edi,0x601080; jmp rax; nop [rax+rax*1+0x0]; pop rbp; ret
+0x400852: pop rbp; mov [rip+0x20084e],0x1 # 0x6010a8 <completed.7585>; repz ret

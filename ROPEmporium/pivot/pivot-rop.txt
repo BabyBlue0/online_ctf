@@ -1,0 +1,2 @@
+0x400943: jmp rax; nop [rax]; pop rbp; ret
+0x4008f5: jmp rax; nop [rax+rax*1+0x0]; pop rbp; ret

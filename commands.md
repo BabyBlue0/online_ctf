@@ -8,6 +8,27 @@
 または、  
 `$ echo \(0 | 2\) > /proc/sys/kernel/randomize_va_space`  
 
+# Linuxシステムコール定義ファイル位置
+## 32bit
+`/usr/include/asm/unistd_32.h`
+## 64bit
+`/usr/include/asm/unistd_64.h`
+## その他情報
+### マニュアル
+https://syscalls.kernelgrok.com/  
+man syscall
+``` man syscall
+       The second table shows the registers used to pass the system call arguments.
+
+       arch/ABI      arg1  arg2  arg3  arg4  arg5  arg6  arg7  Notes
+       ──────────────────────────────────────────────────────────────
+       ---
+       i386          ebx   ecx   edx   esi   edi   ebp   -
+       ---
+       x86-64        rdi   rsi   rdx   r10   r8    r9    -
+       x32           rdi   rsi   rdx   r10   r8    r9    -
+       ---
+```
 
 # GCC( Cコンパイラ )
 ## gcc コンパイルオプション
@@ -66,7 +87,7 @@ grepも併用すると最強
 ## 仮想メモリのメモリマップ
 libcや動的リンクされたバイナリの仮想アドレス値がわかる  
 - (gdb) vmmap
-- $ cat /proc/<PID>/maps
+- $ cat /proc/\<PID\>/maps
 ## 共有ライブラリの確認
 - (gdb) info share
 ## スタックの確認

@@ -41,6 +41,21 @@ man syscall
 |-fno-stack-protector|canaryの無効|
 |-o hoge|出力ファイル名を指定（デフォルトでa.out）|
 
+# Python3
+## 16進 → ASCII
+```python3
+>>> from binascii import unhexlify as u
+>>> u(b'4142434445464748494a4b4c4d4e4f')
+b'ABCDEFGHIJKLMNO'
+```
+もしくは，，，  
+```python3
+>>> b'\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f'
+b'ABCDEFGHIJKLMNO'
+```
+# bvi(バイナリエディタ)
+/* 後で調べる */
+
 # GDB
 ## shellを使いたくなったとき
 (gdb) shell
@@ -84,6 +99,8 @@ grepも併用すると最強
 参考:[http://ropshell.com/peda/Linux_Interactive_Exploit_Development_with_GDB_and_PEDA_Slides.pdf]
 ## ファイル情報
 - (gdb) info files
+## alarmの解除
+- (gdb) handle SIGALRM ignore
 ## 仮想メモリのメモリマップ
 libcや動的リンクされたバイナリの仮想アドレス値がわかる  
 - (gdb) vmmap

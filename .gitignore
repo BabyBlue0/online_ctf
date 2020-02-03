@@ -1,0 +1,5 @@
+#musi
+peda-session*
+*.swp
+**/core
+**/.gdb_history

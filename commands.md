@@ -36,7 +36,7 @@ man syscall
 |:--|:--|
 |-m32|32bitでコンパイル(要インストール)|
 ||*sudo apt install libc6-dev-i386*|
-|-fno-PIE|PIE(メモリ空間のランダム化)を無効|
+|-no-pie|PIE(メモリ空間のランダム化)を無効|
 |-z execstack|NXフラグ(コードの実行可能属性)を無効|
 |-fno-stack-protector|canaryの無効|
 |-o hoge|出力ファイル名を指定（デフォルトでa.out）|
@@ -122,3 +122,5 @@ libcや動的リンクされたバイナリの仮想アドレス値がわかる
 - (peda) ropgadget
 ## 指定した命令まで実行
 - (gdb) stepuntil (cmp|xor|call|jmp)
+## PLT領域の表示(break)
+- (peda) plt

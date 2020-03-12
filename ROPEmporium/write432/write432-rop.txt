@@ -1,6 +1,9 @@
-0x80483e1: pop ebx; ret
-0x80486db: pop ebp; ret
-0x80485f3: popa; cld; ret
-0x80486da: pop edi; pop ebp; ret
-0x80486d9: pop esi; pop edi; pop ebp; ret
-0x80486d8: pop ebx; pop esi; pop edi; pop ebp; ret
+0x80484b0: mov ebx,[esp]; ret
+0x8048670: mov [edi],ebp; ret
+0x8048547: mov al,ds:0xc9010804; repz ret
+0x8048544: mov ds:0x804a068,0x1; leave; repz ret
+0x80485ee: mov ecx,[ebp-0x4]; leave; lea esp,[ecx-0x4]; ret
+0x80484e0: mov al,ds:0xd0ff0804; add esp,0x10; leave; repz ret
+0x804851a: mov al,ds:0xd2ff0804; add esp,0x10; leave; repz ret
+0x80485e9: mov eax,0x0; mov ecx,[ebp-0x4]; leave; lea esp,[ecx-0x4]; ret
+0x804853a: mov ebp,esp; sub esp,0x8; call 0x80484c0 <deregister_tm_clones>; mov ds:0x804a068,0x1; leave; repz ret

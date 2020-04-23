@@ -6,7 +6,7 @@
 オフ `$ sysctl -w kernel.randomize_va_space=0  `  
 オン `$ sysctl -w kernel.randomize_va_space=2  `  
 または、  
-`$ echo \(0 | 2\) > /proc/sys/kernel/randomize_va_space`  
+`$ echo <0or2> > /proc/sys/kernel/randomize_va_space`  
 
 # Linuxシステムコール定義ファイル位置
 ## 32bit
@@ -53,6 +53,14 @@ b'ABCDEFGHIJKLMNO'
 >>> b'\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f'
 b'ABCDEFGHIJKLMNO'
 ```
+# バイナリファイルからnByte分抜き出すコマンド  
+フォーマットは適宜，変更すること．  
+hexdumpの時点でバクスラをエスケープすると2つに増殖するので，sedで文字列を置換している．
+```
+$ hexdump -s <行数(10進数)> -n <byte> -e '/1 "xx%02x"' main | sed 's/xx/\\x/g'
+\x29\x06\x16\x4f\x2b\x35\x30\x1e\x51\x1b\x5b\x14\x4b\x08\x5d\x2b\x50\x14\x5d\x00\x19\x17\x59\x52\x5d
+```
+
 # bvi(バイナリエディタ)
 /* 後で調べる */
 

@@ -6,7 +6,7 @@
 オフ `$ sysctl -w kernel.randomize_va_space=0  `  
 オン `$ sysctl -w kernel.randomize_va_space=2  `  
 または、  
-`$ echo <0or2> > /proc/sys/kernel/randomize_va_space`  
+`$ echo <0|2> > /proc/sys/kernel/randomize_va_space`  
 
 # Linuxシステムコール定義ファイル位置
 ## 32bit
@@ -55,7 +55,7 @@ b'ABCDEFGHIJKLMNO'
 ```
 # バイナリファイルからnByte分抜き出すコマンド  
 フォーマットは適宜，変更すること．  
-hexdumpの時点でバクスラをエスケープすると2つに増殖するので，sedで文字列を置換している．
+hexdumpの書式設定でバクスラをエスケープすると2つに増殖するので('\\\\xbe\\\\xba'みたいになる)，sedで文字列を置換している．
 ```
 $ hexdump -s <行数(10進数)> -n <byte> -e '/1 "xx%02x"' main | sed 's/xx/\\x/g'
 \x29\x06\x16\x4f\x2b\x35\x30\x1e\x51\x1b\x5b\x14\x4b\x08\x5d\x2b\x50\x14\x5d\x00\x19\x17\x59\x52\x5d
@@ -66,13 +66,19 @@ $ hexdump -s <行数(10進数)> -n <byte> -e '/1 "xx%02x"' main | sed 's/xx/\\x/
 
 # GDB
 ## shellを使いたくなったとき
-(gdb) shell
+- (gdb) shell
+## 親プロセスのままデバッグしたいとき
+GDBは子プロセスが生成されると自動的に子プロセスの方をアタッチする．それを無効化する（つまり親プロセスのままデバッグする）コマンド．  
+参考：[https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/6/html/developer_guide/gdbforkedexec]  
+- (gdb) set follow-fork-mode parent  
 
 # 静的解析
 ## ファイル内の文字列検索
 grepも併用すると最強 
 - $ strings -tx ./hoge
-- $ readelf -p .rodata ./hoge
+- $ readelf -p .rodata ./hoge  
+
+メモリダンプだが，仮想アドレス表示なのでわかりやすい（かも？）
 - $ objdump -s -j .rodata ./hoge
 
 ## GOTアドレス一覧
@@ -86,7 +92,7 @@ grepも併用すると最強
 
 ## シンボル表示
 グローバル変数名や関数名からアドレスを求める    
-- $ readelf -s ./hoge | grep buffer
+- $ readelf -s ./hoge | grep \<symbol name\>
 
 ## elfファイルヘッダ情報
 ### ヘッダ情報をすべて表示
@@ -112,11 +118,15 @@ grepも併用すると最強
 ## 仮想メモリのメモリマップ
 libcや動的リンクされたバイナリの仮想アドレス値がわかる  
 - (gdb) vmmap
-- $ cat /proc/\<PID\>/maps
+- $ cat /proc/\<PID\>/maps  
+
+pidofを使えば，プロセス名から調べられる．  
+- $ cat /proc/\`pidof \<process name\>\`/maps
+
 ## 共有ライブラリの確認
 - (gdb) info share
 ## スタックの確認
-- (gdb) telescope <$ebp or $esp> \<num\>
+- (gdb) telescope \<$ebp|$esp\> \<length\>
 ## shellcode
 ### create
 - (peda) shellcode generate x86/linux exec
@@ -129,6 +139,6 @@ libcや動的リンクされたバイナリの仮想アドレス値がわかる
 ## ropgadget
 - (peda) ropgadget
 ## 指定した命令まで実行
-- (gdb) stepuntil (cmp|xor|call|jmp)
+- (gdb) stepuntil \<cmp|xor|call|jmp\>
 ## PLT領域の表示(break)
 - (peda) plt

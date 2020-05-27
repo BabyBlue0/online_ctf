@@ -123,6 +123,13 @@ libcや動的リンクされたバイナリの仮想アドレス値がわかる
 pidofを使えば，プロセス名から調べられる．  
 - $ cat /proc/\`pidof \<process name\>\`/maps
 
+## GOTの確認
+got overwriteができてるかの確認で使う  
+```
+(gdb) p 'atol@got.plt'
+$7 = (<text from jump slot in .got.plt, no debug info>) 0x400590 <printf@plt>
+```
+
 ## 共有ライブラリの確認
 - (gdb) info share
 ## スタックの確認
@@ -140,5 +147,9 @@ pidofを使えば，プロセス名から調べられる．
 - (peda) ropgadget
 ## 指定した命令まで実行
 - (gdb) stepuntil \<cmp|xor|call|jmp\>
-## PLT領域の表示(break)
-- (peda) plt
+## PLT領域の表示
+breakあり  
+- (peda) plt  
+breakなし  
+- (peda) elfsymbol
+- (peda) elfsymbol printf

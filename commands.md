@@ -129,9 +129,12 @@ got overwriteができてるかの確認で使う
 (gdb) p 'atol@got.plt'
 $7 = (<text from jump slot in .got.plt, no debug info>) 0x400590 <printf@plt>
 ```
-
+## pythonコマンド実行
+- (gef) pi print('A'*0x20+'B'*0x08)
 ## 共有ライブラリの確認
 - (gdb) info share
+## 参照先
+- (gef) dereference \<$sp|$pc\> \<length\>
 ## スタックの確認
 - (gdb) telescope \<$ebp|$esp\> \<length\>
 ## shellcode
@@ -150,6 +153,7 @@ $7 = (<text from jump slot in .got.plt, no debug info>) 0x400590 <printf@plt>
 ## PLT領域の表示
 breakあり  
 - (peda) plt  
+
 breakなし  
 - (peda) elfsymbol
 - (peda) elfsymbol printf

@@ -60,6 +60,9 @@ hexdumpの書式設定でバクスラをエスケープすると2つに増殖す
 $ hexdump -s <行数(10進数)> -n <byte> -e '/1 "xx%02x"' main | sed 's/xx/\\x/g'
 \x29\x06\x16\x4f\x2b\x35\x30\x1e\x51\x1b\x5b\x14\x4b\x08\x5d\x2b\x50\x14\x5d\x00\x19\x17\x59\x52\x5d
 ```
+# libcの検索
+libcの下位2Byteは固定．なのでデータベースからlibcを推測することができる  
+https://libc.blukat.me/  
 
 # bvi(バイナリエディタ)
 /* 後で調べる */
@@ -106,7 +109,6 @@ grepも併用すると最強
 - $ readelf -l --wide ./hoge | grep LOAD
 ### セクションヘッダ
 - $ objdump -h ./hoge
-
 
 
 # 動的解析

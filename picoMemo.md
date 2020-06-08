@@ -16,7 +16,8 @@ $ ssh -L 60000:localhost:60000 <USERNAME>@2018shell4.picoctf.com
 1で返ってきたリモートシェルで以下のコマンドを実行する．  
 \<PROBLEM DIRECTORY\> は各問題のディレクトリ．  
 ```remote shell1
-$ socat TCP-LISTEN:60000,reuseaddr,fork EXEC:"/problems/<PROBLEM DIRECTORY>/vuln"
+$ cd /problems/<PROBLEM DIRECTORY>/
+$ socat TCP-LISTEN:60000,reuseaddr,fork EXEC:"./vuln"
 ```  
 3. ローカルのshellで，`nc localhost 60000`とすればリモートの問題に接続できる
 ```local shell2

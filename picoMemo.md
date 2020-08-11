@@ -1,6 +1,11 @@
 # picomemo
 適当メモ  
 
+## challengeファイルをローカルに落とす
+```bash
+scp <USERNAME>@2018shell4.picoctf.com:/problems/<PROBLEM DIRECTORY>/* ./
+```
+
 ## ローカル環境のpwntoolsからリモートのChallengeを実行する方法 
 ポートフォワードによって，リモートとローカルをつなぐ  
 この方法を行うには，miscのssh-keyzを終わらしておく必要がある．  
